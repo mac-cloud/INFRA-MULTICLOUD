@@ -1,0 +1,18 @@
+apiVersion: argoproject.io/v1
+kind: Application
+metadata: 
+    name: demo-app-aws
+    namespace: argocd
+spec: 
+    project: default
+    source: 
+    repoURL: 'https.github.com/mac-cloud/INFRA-MULTICLOUD'
+    path: 'k8s'
+    targetRevision: HEAD
+destination:
+    server: '' # url to cluster server
+    namespace: demo-app
+syncPolicy: 
+    automated: 
+    prune: true
+    selfHeal: true             
