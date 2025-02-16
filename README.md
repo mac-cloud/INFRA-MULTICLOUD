@@ -73,5 +73,3 @@ This setup minimizes downtime and enhances system resilience, making it ideal fo
 ## Contributing
 Feel free to fork this repository, open issues, and submit pull requests.
 
-## License
-MIT License
