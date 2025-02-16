@@ -65,7 +65,7 @@ helm install prometheus prometheus-community/kube-prometheus-stack --namespace m
 - Simulate node failures and observe alerting mechanisms.
 
 ## Architecture Diagram
-![Architecture](docs/architecture-diagram.png)
+![Architecture](Images/infra.jpeg)
 
 ## Business Case
 This setup minimizes downtime and enhances system resilience, making it ideal for production environments requiring high availability.
