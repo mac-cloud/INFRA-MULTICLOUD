@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Application</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Loan Application Form</h1>
+    <form action="/apply" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="number" step="0.01" name="amount" placeholder="Loan Amount" required>
+        <input type="number" name="term" placeholder="Term (months)" required>
+        <button type="submit">Apply</button>
+    </form>
+
+    <h2>Submitted Loans</h2>
+    <table>
+        <tr>
+            <th>Name</th><th>Amount</th><th>Term</th><th>Status</th><th>Action</th>
+        </tr>
+        {{range $i, $loan := .}}
+        <tr>
+            <td>{{$loan.Name}}</td>
+            <td>{{$loan.Amount}}</td>
+            <td>{{$loan.Term}}</td>
+            <td>{{if $loan.Repaid}}✅ Repaid{{else}}⏳ Pending{{end}}</td>
+            <td>
+                {{if not $loan.Repaid}}
+                <form method="POST" action="/repay" style="display:inline;">
+                    <input type="hidden" name="index" value="{{$i}}">
+                    <button type="submit">Mark as Repaid</button>
+                </form>
+                {{end}}
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+</html>

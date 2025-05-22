@@ -1,0 +1,26 @@
+#Alerts are simply logged to console
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: 'log'
+
+receivers:
+  - name: 'log'
+    
+
+
+#Alert sent to gemail
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'grafana@gmail.com'
+  smtp_auth_username: 'alert12@gmail.com'
+  smtp_auth_password: 'f63sgs64GD43Femnvm'
+
+route:
+  receiver: 'email-alert'
+
+receivers:
+  - name: 'email-alert'
+    email_configs:
+      - to: 'your-recipient@gmail.com'

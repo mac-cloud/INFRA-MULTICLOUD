@@ -1,0 +1,20 @@
+groups:
+  - name: loan_app_alerts
+    rules:
+      - alert: HighRequestRate
+        expr: rate(http_requests_total[1m]) > 10
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High request rate detected"
+          description: "App is receiving >10 requests/sec for the last 1 minute"
+
+      - alert: AppDown
+        expr: up{job="loan_app"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Go App Down"
+          description: "No metrics received from loan-app in last 30 seconds"
